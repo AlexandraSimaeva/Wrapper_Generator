@@ -102,10 +102,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Program Files\Libraries\clang+llvm-18.1.8-x86_64-pc-windows-msvc\clang+llvm-18.1.8-x86_64-pc-windows-msvc\include </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\Libraries\clang+llvm-18.1.8-x86_64-pc-windows-msvc\clang+llvm-18.1.8-x86_64-pc-windows-msvc\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libclang.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -124,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AST_Exception.cpp" />
+    <ClCompile Include="AST_Storage.cpp" />
     <ClCompile Include="Class_inf.cpp" />
     <ClCompile Include="Comment.cpp" />
     <ClCompile Include="CommentExceptions.cpp" />
@@ -132,9 +136,12 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="Method.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Parser_Exception.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AST_Exception.h" />
+    <ClInclude Include="AST_Storage.h" />
     <ClInclude Include="Class_inf.h" />
     <ClInclude Include="Comment.h" />
     <ClInclude Include="CommentExceptions.h" />
@@ -142,6 +149,8 @@
     <ClInclude Include="Destructor.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Method.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="Parser_Exception.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
