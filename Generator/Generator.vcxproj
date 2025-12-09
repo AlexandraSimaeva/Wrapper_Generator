@@ -136,6 +136,7 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="Method.cpp" />
+    <ClCompile Include="Object_Storage.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Parser_Exception.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Destructor.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Method.h" />
+    <ClInclude Include="Object_Storage.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Parser_Exception.h" />
   </ItemGroup>

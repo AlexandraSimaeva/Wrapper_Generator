@@ -5,16 +5,15 @@
 #include <memory>
 #include <stdexcept>
 #include "CommentExceptions.h"
+#include "Object_Storage.h"
 namespace AST_Storage
 {
-	class Comment
+	class Comment: public Object_Storage
 	{
 	protected:
 		Comment() = default; // protected constructor
-		Comment(const Comment& other) = default;//constructor copy
 	public:
 		virtual ~Comment() = default; //destructor
-		virtual Comment* clone() const = 0; //method copy
 		virtual const std::string return_comment_text() = 0; // return text of the comment
 		virtual const std::string return_path_file() = 0;
 		virtual const int return_num_start() = 0; // return start number
@@ -24,7 +23,6 @@ namespace AST_Storage
 	class Comment_long : public Comment //Comments start from "/*"
 	{
 	private:
-		Comment_long(const Comment_long& other);//constructor copy
 		std::map<int, std::string>  comment_num_string; // text comment
 		std::string path_file = "";
 		bool is_smth_before = false; // position flag
@@ -33,9 +31,9 @@ namespace AST_Storage
 		int num_starts = -1;
 		int num_ends = -1;
 	public:
-		~Comment_long() override {}
-		Comment* clone() const override { return new Comment_long(*this); }
+		~Comment_long() override = default;
 		Comment_long(std::map<int, std::string> comment, bool before, bool after, std::string path_file); // Constructor base
+		void Add_Object(std::unique_ptr<Object_Storage>, Type_Object type_obj) override;
 		const std::string return_comment_text() override
 		{ 
 			if (text_comment.empty()) {
@@ -83,14 +81,13 @@ namespace AST_Storage
 	private:
 		int num_string = -1;
 		std::string text_comment = "";// text comment
-		Comment_short(const Comment_short& other); //constructor copy
 		std::string path_file = "";
 		bool is_smth_before = false; // position flag
 		bool is_smth_after = false; // position flag
 	public:
 		~Comment_short() override {}
-		Comment* clone() const override { return new Comment_short(*this); }
 		Comment_short(std::string text_comment, int num_string, bool before, bool after, std::string path_file);// Constructor base 
+		void Add_Object(std::unique_ptr<Object_Storage> object, Type_Object type_obj) override;
 		const std::string return_comment_text() override 
 		{ 
 			if (text_comment.empty()) {
